@@ -39,3 +39,29 @@ $ npm run generate_code_5000
 $ npm build_stable
 $ npm build_patched
 ```
+
+## Performance on my machine
+
+Generated on 2023-03-29. Omitted irrelevant output.
+
+```
+$ npm run generate_code_100
+
+$ npm run build_stable
+Bind time:       0.16s
+Total time:      0.65s
+
+$ npm run build_patched
+Bind time:       0.17s
+Total time:      0.62s
+
+$ npm run generate_code_5000
+
+$ npm run build_stable
+Bind time:        4.87s
+Total time:       5.61s
+
+$ npm run build_patched
+Bind time:        0.45s
+Total time:       1.19s
+```
