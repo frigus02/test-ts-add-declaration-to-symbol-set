@@ -1,0 +1,19 @@
+{
+  "name": "test-ts-add-declaration-to-symbol-set",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "generate_code_100": "node scripts/generate_code.mjs 100 > generated_code.d.ts",
+    "generate_code_5000": "node scripts/generate_code.mjs 5000 > generated_code.d.ts",
+    "patch_tsc": "patch -p0 -i tsc_patch.diff -o node_modules/typescript/lib/tsc_patched.js",
+    "build_stable": "node node_modules/typescript/lib/tsc.js -p tsconfig.json --diagnostics",
+    "build_patched": "node node_modules/typescript/lib/tsc_patched.js -p tsconfig.json --diagnostics"
+  },
+  "author": "Jan",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.0.2"
+  }
+}

@@ -1,0 +1,19 @@
+--- node_modules/typescript/lib/tsc.js	2023-03-29 10:22:16.134686843 +0000
++++ node_modules/typescript/lib/tsc.js	2023-03-29 10:29:13.026014568 +0000
+@@ -38918,7 +38918,15 @@
+   function addDeclarationToSymbol(symbol, node, symbolFlags) {
+     symbol.flags |= symbolFlags;
+     node.symbol = symbol;
+-    symbol.declarations = appendIfUnique(symbol.declarations, node);
++    if (symbol.declarations) {
++      if (!symbol.declarationSet.has(node)) {
++        symbol.declarations.push(node);
++        symbol.declarationSet.add(node);
++      }
++    } else {
++      symbol.declarations = [node];
++      symbol.declarationSet = new Set();
++    }
+     if (symbolFlags & (32 /* Class */ | 384 /* Enum */ | 1536 /* Module */ | 3 /* Variable */) && !symbol.exports) {
+       symbol.exports = createSymbolTable();
+     }
